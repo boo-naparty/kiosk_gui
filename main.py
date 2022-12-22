@@ -34,15 +34,32 @@ def sidemenu_open():
 def drinkmenu_open():
    openFrame(drinkmenu_frame)   
 
-class menu_header:
-   def __init__(self, frame_info):
-      self.header_label = Label(frame_info, width=500, height=150, bg="white")
-      
-
 #기본 Tk 구성요소
 window = Tk()
 window.title("main.py")
 window.geometry("500x1200+100+100")
+
+#헤더 관련 어쩌구... 일단 frame을 다 따로 나눈 이상 메뉴에서의 frame별 이동은 버튼클릭액션이 필수적이다. 바보같이 하나하나 노가다하는중
+header_special_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/special_menu_select.png"))
+header_special_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/special_menu_non.png"))
+header_new_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/new_menu_select.png"))
+header_new_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/new_menu_non.png"))
+header_premium_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/premium_menu_select.png"))
+header_premium_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/premium_menu_non.png"))
+header_whoper_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/whoper_menu_select.png"))
+header_whoper_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/whoper_menu_non.png"))
+header_chicken_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/chicken_menu_select.png"))
+header_chicken_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/chicken_menu_non.png"))
+header_alldayking_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/alldayking_menu_select.png"))
+header_alldayking_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/alldayking_menu_non.png"))
+header_side_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/side_menu_select.png"))
+header_side_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/side_menu_non.png"))
+header_drink_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/drink_menu_select.png"))
+header_drink_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/drink_menu_non.png"))
+header_menu = [header_special_select_img, header_special_non_img, header_new_select_img, header_new_non_img, header_premium_select_img, header_premium_non_img
+               , header_whoper_select_img, header_whoper_non_img, header_chicken_select_img, header_chicken_non_img, header_alldayking_select_img, header_alldayking_non_img
+               , header_side_select_img, header_side_non_img, header_drink_select_img, header_drink_non_img]      
+
 
 #여러가지 frame들 선언장소
 home_frame = Frame(window)
@@ -84,26 +101,7 @@ mainpage_btn3.pack()
 mainpage_btn4.pack()
 mainpage_btn5.pack()
 
-#헤더 관련 어쩌구... 일단 frame을 다 따로 나눈 이상 메뉴에서의 frame별 이동은 버튼클릭액션이 필수적이다. 바보같이 하나하나 노가다하는중
-header_special_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/special_menu_select.png"))
-header_special_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/special_menu_non.png"))
-header_new_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/new_menu_select.png"))
-header_new_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/new_menu_non.png"))
-header_premium_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/premium_menu_select.png"))
-header_premium_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/premium_menu_non.png"))
-header_whoper_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/whoper_menu_select.png"))
-header_whoper_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/whoper_menu_non.png"))
-header_chicken_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/chicken_menu_select.png"))
-header_chicken_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/chicken_menu_non.png"))
-header_alldayking_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/alldayking_menu_select.png"))
-header_alldayking_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/alldayking_menu_non.png"))
-header_side_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/side_menu_select.png"))
-header_side_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/side_menu_non.png"))
-header_drink_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/drink_menu_select.png"))
-header_drink_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/drink_menu_non.png"))
-header_menu = [header_special_select_img, header_special_non_img, header_new_select_img, header_new_non_img, header_premium_select_img, header_premium_non_img
-               , header_whoper_select_img, header_whoper_non_img, header_chicken_select_img, header_chicken_non_img, header_alldayking_select_img, header_alldayking_non_img
-               , header_side_select_img, header_side_non_img, header_drink_select_img, header_drink_non_img]
+
 
 menu_header_special_label = Label(specialmenu_frame, width=500, height=150, bg="white")
 menu_header_new_label = Label(newmenu_frame, width=500, height=150, bg="white")
@@ -114,10 +112,28 @@ menu_header_alldayking_label = Label(alldaykingmenu_frame, width=500, height=150
 menu_header_side_label = Label(sidemenu_frame, width=500, height=150, bg="white")
 menu_header_drink_label = Label(drinkmenu_frame, width=500, height=150, bg="white")
 
+class menu_header:
+   def __init__(self, frame_info, num_info):
+      self.header_label = Label(frame_info, width=500, height=150, bg="white")
+      self.header_button = []
+      for i in range(0, 8):
+         if num_info == i:
+            self.header_button.append(Button(self.header_label, image = header_menu[i * 2],width=52, height=20, bg="white"))
+         else:
+           self.header_button.append(Button(self.header_label, image = header_menu[i * 2 + 1],width=52, height=20, bg="white"))
+         self.header_button[i].pack()
+      self.header_label.pack()
+
 #여긴 아직 헤더 미완성임 / 사이즈 조절중이니깐 천천히 바꾸겠음
-header_special_select_btn = Button(menu_header_special_label, image=header_special_select_img, width=52, height=20, bg="white")
-header_special_select_btn.pack(side="top")
-menu_header_special_label.pack()
+header_special = menu_header(menu_header_special_label, 0)
+header_special = menu_header(menu_header_new_label, 1)
+header_special = menu_header(menu_header_premium_label, 2)
+header_special = menu_header(menu_header_whoper_label, 3)
+header_special = menu_header(menu_header_chicken_label, 4)
+header_special = menu_header(menu_header_alldayking_label, 5)
+header_special = menu_header(menu_header_side_label, 6)
+header_special = menu_header(menu_header_drink_label, 7)
+
 
 #스페셜 메뉴 화면 구성요소들 / 나중에 장바구니 담는 액션이 필요하다. 
 menu_special_1_img = ImageTk.PhotoImage(Image.open("./img/menu/special_1.png"))
