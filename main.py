@@ -34,6 +34,8 @@ def sidemenu_open():
 def drinkmenu_open():
    openFrame(drinkmenu_frame)   
 
+jang = {}
+
 #기본 Tk 구성요소
 window = Tk()
 window.title("main.py")
@@ -56,9 +58,6 @@ header_side_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/side_m
 header_side_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/side_menu_non.png"))
 header_drink_select_img = ImageTk.PhotoImage(Image.open("./img/menu_header/drink_menu_select.png"))
 header_drink_non_img = ImageTk.PhotoImage(Image.open("./img/menu_header/drink_menu_non.png"))
-header_menu = [header_special_select_img, header_special_non_img, header_new_select_img, header_new_non_img, header_premium_select_img, header_premium_non_img
-               , header_whoper_select_img, header_whoper_non_img, header_chicken_select_img, header_chicken_non_img, header_alldayking_select_img, header_alldayking_non_img
-               , header_side_select_img, header_side_non_img, header_drink_select_img, header_drink_non_img]      
 
 
 #여러가지 frame들 선언장소
@@ -71,6 +70,7 @@ chickenmenu_frame = Frame(window)
 alldaykingmenu_frame = Frame(window)
 sidemenu_frame = Frame(window)
 drinkmenu_frame = Frame(window)
+jang_frame = Frame(window)
 
 #frame 기본 그리드설정
 home_frame.grid(row=0, column=0, sticky="nsew")
@@ -82,6 +82,7 @@ chickenmenu_frame.grid(row=0, column=0, sticky="nsew")
 alldaykingmenu_frame.grid(row=0, column=0, sticky="nsew")
 sidemenu_frame.grid(row=0, column=0, sticky="nsew")
 drinkmenu_frame.grid(row=0, column=0, sticky="nsew")
+jang_frame.grid(row=0, column=0, sticky="nsew")
 
 #메인화면 구성요소 선언 장소 / 메인화면이 그냥 홈 화면이다. 이미지 따오고, 버튼 추가하고 버튼 frame에 넣어놨는데 라벨로 묶어버릴지 아니면 이미지 통합할지 고민중이다
 #추후에 심영준이 수정 예정
