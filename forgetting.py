@@ -1,23 +1,20 @@
-from tkinter import *
+import cv2
+import pyzbar.pyzbar as pyzbar
 
-class Test():
-   def __init__(self):
-       self.root = Tk()
-       self.label=Label(self.root,
-                           text = "Label")
-       self.buttonForget = Button(self.root,
-                          text = 'Click to hide Label',
-                          command=lambda: self.label.pack_forget())
-       self.buttonRecover = Button(self.root,
-                          text = 'Click to show Label',
-                          command=lambda: self.label.pack())       
-       
-       self.buttonForget.pack()
-       self.buttonRecover.pack()
-       self.label.pack(side="bottom")
-       self.root.mainloop()
+cap = cv2.VideoCapture(0)
 
-   def quit(self):
-       self.root.destroy()
+while True:
+    success, frame = cap.read()
+    
+    if success:
+        for code in pyzbar.decode(frame):
+            my_code = code.data.decode('utf-8')
+            print("인식 성공 : ", my_code)
+        cv2.imshow('cam', frame)
         
-app = Test()
+        key = cv2.waitKey(1)
+        if key == 27:
+            break
+       
+cap.release()
+cv2.destroyAllWindows()
